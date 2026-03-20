@@ -1,0 +1,22 @@
+# Dependency directories
+node_modules/
+frontend/node_modules/
+contracts/target/
+contracts/engagex-contract/target/
+
+# Next.js
+frontend/.next/
+frontend/out/
+
+# Build and environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.DS_Store
+
+# Soroban / Rust
+Cargo.lock
+target/
+**/*.rs.bk
