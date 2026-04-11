@@ -9,7 +9,7 @@ All campaign funds are securely held in a Soroban **Smart Contract Escrow** depl
 ---
 
 ## 🌐 Project URL: 
-### You can visit [EngageX](https://engage-x-app.netlify.app/)
+### You can visit our platform here @[EngageX](https://engage-x-app.netlify.app/)
 
 ---
 
