@@ -8,6 +8,11 @@ All campaign funds are securely held in a Soroban **Smart Contract Escrow** depl
 
 ---
 
+## 🌐 Project URL: 
+### You can visit [EngageX](https://engage-x-app.netlify.app/)
+
+---
+
 ## 🎯 Key Features
 - **Smart Contract Escrow**: Campaign budgets are deposited and locked securely in Rust-based smart contracts.
 - **Wallet Authentication**: Seamless sign-ups/logins utilizing Stellar Wallet Addresses as unique user identifiers.
