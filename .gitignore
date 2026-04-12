@@ -20,3 +20,5 @@ frontend/out/
 Cargo.lock
 target/
 **/*.rs.bk
+
+project_spec.md
