@@ -2,7 +2,7 @@
 node_modules/
 frontend/node_modules/
 contracts/target/
-contracts/engagex-contract/target/
+contracts/verimed-contract/target/
 
 # Next.js
 frontend/.next/

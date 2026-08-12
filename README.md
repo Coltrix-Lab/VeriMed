@@ -1,89 +1,88 @@
-# EngageX 🚀
-**A Decentralized Task Engagement Platform Built on Stellar (Soroban)**
+# VeriMed 💊🔗
+
+**Blockchain-Verified Pharmaceutical Provenance & Aid Delivery — Built on Stellar (Soroban)**
 
 ## 🌟 Overview
-EngageX is a blockchain-powered engagement platform bridging companies and users. Companies can launch marketing campaigns (such as follow, like, share, product advertisement) with an assigned budget. Users participate by completing these micro-tasks to earn cryptocurrency rewards securely and transparently.
 
-All campaign funds are securely held in a Soroban **Smart Contract Escrow** deployed on the Stellar network. Payouts are trustless and automated upon off-chain verification by platform administrators.
+An estimated **1 in 10 medical products in low- and middle-income countries is substandard or falsified** (WHO). Fake antimalarials, underdosed antibiotics, diluted insulin — this kills patients directly and drives antimicrobial resistance globally. It is not a single-country problem: every country with a pharmaceutical supply chain is exposed, from Lagos to Manila to rural India.
+
+A related, compounding problem: **donor-funded medicine routinely leaks** before it reaches the clinic it was meant for — stock stolen or diverted in transit, with little to no verifiable proof of where the loss happened. Aid funders (governments, NGOs, multilateral donors) have no reliable way to prove delivery, only to hope for it.
+
+**VeriMed** is a blockchain-based pharmaceutical provenance and verified-delivery platform with two integrated layers:
+
+1. **Manufacturer-to-Pharmacy Traceability** — every drug batch gets a tamper-evident code at manufacture; every custody transfer (manufacturer → distributor → pharmacy/clinic) is logged on an immutable chain; anyone can scan a unit to instantly verify authenticity, expiry, and custody history — no wallet or crypto knowledge required.
+2. **Verified Aid & Donor-Funded Delivery** — donors fund an escrow pool tied to a shipment or program; funds release automatically and only when the receiving clinic or Community Health Worker confirms last-mile delivery by scanning the batch on arrival. This closes the loop on "did the aid actually arrive," provably.
 
 ---
 
-## 🌐 Project URL: 
-### You can visit our platform here @[EngageX](https://engage-x-app.netlify.app/)
+## 🧬 Why Blockchain Here (Not as a Buzzword)
+
+The hard part of drug provenance is proving an **object's chain of custody** — a problem blockchain is structurally suited for, unlike trying to verify subjective human behavior. A batch's custody chain is a sequence of signed handoffs between known, wallet-identified supply-chain participants. Any break in that expected sequence, a duplicate scan of a unit already dispensed, or a manual counterfeit report is immediately visible and auditable — no admin eyeballing screenshots, no trust required in any single party.
 
 ---
 
 ## 🎯 Key Features
-- **Smart Contract Escrow**: Campaign budgets are deposited and locked securely in Rust-based smart contracts.
-- **Wallet Authentication**: Seamless sign-ups/logins utilizing Stellar Wallet Addresses as unique user identifiers.
-- **Commission Model**: The platform programmatically deducts a **15% commission** from completed tasks when funds are dispersed to users in a verified batch. 85% goes directly to the verified users.
-- **Rollover Mechanics**: If the campaign timeframe ends and the tasks remain uncompleted, the remaining funds roll over into a new round rather than reverting to the company.
-- **Dispute & Intervention System**: Mid-campaign alert triggers allow administrators to step in if a task lacks engagement or requires dispute resolution.
+
+- **Batch & Custody Registry**: Manufacturers register batches on-chain with product metadata, manufacture/expiry dates, and unit serials; every custody handoff (distributor, wholesaler, pharmacy, clinic) is logged as a signed on-chain event.
+- **Scan-to-Verify**: A public, walletless web flow — scan a QR/NFC code and get a plain-language authenticity result: genuine or flagged, in-date or expired, expected custody chain or anomaly.
+- **Trigger-Agnostic Escrow**: The core escrow/payout contract (inherited and generalized from this project's original task-engagement design) locks a sponsor's funds and releases them automatically when a defined verification event fires — now generalized so that event can be a delivery confirmation, not just an admin sign-off.
+- **Configurable Commission**: Platform commission is set per program (basis points), not hardcoded — different for manufacturer SaaS fees, donor verification fees, and regulator data-licensing.
+- **Rollover Mechanics**: Unspent program/shipment funds roll over into the next round rather than defaulting to reversion.
+- **Counterfeit & Diversion Reporting**: Any participant — including consumers — can flag a suspicious batch, generating an on-chain flag and notifying the regulator role.
+- **Wallet-Based Authentication**: Supply-chain participants (manufacturers, distributors, pharmacies, donors) authenticate via Stellar wallet; consumers never need one.
 
 ---
 
-## 🗺️ User Flows & Journeys
+## 🗺️ Roles
 
-### 🏢 1. Company Journey (Campaign Creation)
-1. **Connect Wallet:** The company logs in via their Stellar wallet.
-2. **Dashboard Overview:** Views active, past, and drafted campaigns.
-3. **Create Campaign:** 
-   - Defines tasks (e.g., "Like and share our new post on X/Twitter").
-   - Allocates a total budget (e.g., 5,000 XLM / USDC).
-4. **Fund & Lock Escrow:** 
-   - Deposits the budget into the Soroban Smart Contract.
-   - Funds are locked into Escrow, and the campaign goes `ACTIVE`.
-
-### 👥 2. User Journey (Earning by Engaging)
-1. **Connect Wallet:** Users log in using their Stellar wallet (their unique platform identifier).
-2. **Browse Tasks:** Explores `ACTIVE` campaigns on their personalized dashboard.
-3. **Claim & Complete Tasks:** Selects tasks to complete on external platforms (e.g., TikTok, X).
-4. **Submit Evidence:** Uploads screenshots or video evidence of the completed tasks securely via the web app.
-5. **Get Paid:** Upon Admin verification, the smart contract disperses their share of the reward straight to their wallet!
-
-### 🛡️ 3. Admin Journey (Verification & Management)
-1. **Review Submissions:** Checks pending user submissions and evidence off-chain on the backend dashboard.
-2. **Approve & Payout:** Initiates a signed transaction on the smart contract for the verified users to release payments automatically.
-3. **Interventions:** Intervenes mid-timeline if tasks remain uncompleted to resolve issues or promote the campaign.
-4. **Rollover Trigger:** Manually triggers unspent funds at the end of the campaign timeline to rollover into the next round.
+| Role | What they do |
+|---|---|
+| **Manufacturer** | Registers batches, mints serial codes, logs initial custody. |
+| **Distributor / Wholesaler** | Logs custody handoff events as stock moves through the chain. |
+| **Pharmacy / Clinic** | Receives stock (logs handoff), scans to verify before dispensing. |
+| **Regulator** (NAFDAC-equivalent) | Read access to chain-of-custody and counterfeit-report data; dashboard of flagged batches and diversion hotspots. |
+| **Donor / Sponsor** (KOICA-style program, NGO, government agency) | Funds an escrow pool tied to a shipment/program; views delivery-confirmation and impact/M&E reporting. |
+| **Receiving Clinic / CHW** | Confirms last-mile delivery by scanning on arrival; may be disbursed to from escrow. |
+| **Consumer / Patient** | Scans a unit at point of use to verify authenticity — no wallet required. |
+| **Platform Admin** | Oversight dashboard, dispute resolution for contested custody events or counterfeit reports. |
 
 ---
 
 ## 🏛️ Smart Contract Mechanics (Rust / Soroban)
 
-The decentralized contract is built entirely in Rust for the robust Stellar ecosystem. 
+Contract lives at [`contracts/verimed-contract`](contracts/verimed-contract). Two modules:
 
-### Core State Structure
-- `campaigns`: Map of `campaign_id` => `CampaignDetails`
-- `CampaignDetails`: Tracks `company_wallet`, `total_funds`, `status`, `timeline`, and `verified_users`.
+### `escrow` — generalized from this project's original campaign-escrow logic
+- `initialize_program(sponsor, token, total_funds, commission_bps, treasury)` — sponsor deposits real tokens into the contract, locking them; commission is configurable per program instead of a fixed rate.
+- `confirm_event(verifier, program_id, beneficiary, trigger)` — records a verified release-trigger event (e.g. `DeliveryConfirmed`, `AdminVerified`) against a beneficiary. Trigger-agnostic by design — a delivery confirmation event from `batch` can drive this the same way an admin verification could.
+- `execute_payout(admin, program_id)` — computes and transfers the configurable commission to the treasury and splits the remainder across confirmed beneficiaries — real token transfers, not bookkeeping-only.
+- `rollover_program(admin, program_id)` — unspent funds continue into the next round.
 
-### Primary Contract Functions
-- **`initialize_campaign`**: Transfers funds from the company to the contract, locking them securely in escrow and tracking state securely.
-- **`verify_user_task`**: Appends verified user wallets to the campaign's completion list.
-- **`execute_payout`**: 
-   - Computes the user reward pool based on the number of verifications.
-   - Computes the platform commission.
-   - Transfers **15%** to the App Treasury automatically.
-   - Splits the remaining **85%** proportionally among the verified users.
-- **`trigger_rollover`**: Resets the campaign logic to "round 2", retaining unspent locked funds securely and expanding the timeline.
-
----
-
-## 🔄 Event Triggers
-We emphasize highly trackable life cycles ensuring transparent state transitions between on-chain and off-chain data:
-1. `CampaignCreated` -> UI registers a new campaign.
-2. `FundsDeposited` -> Smart contract securely locks down the funds.
-3. `TaskClaimed` -> Users reserve slots (off-chain/hybrid).
-4. `EvidenceSubmitted` -> Pings Admin dashboards for review.
-5. `MidTimelineAlert` -> Off-chain Cron triggers if completion is under 50% at midpoint.
-6. `TaskVerified` -> Smart contract logs verified users for reward pooling.
-7. `PayoutExecuted` -> Releases funds to end users and deducts platform commission securely.
-8. `CampaignRollover` -> Continues unspent funds into a new campaign timeline.
+### `batch` — new
+- `register_batch(manufacturer, batch_id, product_name, manufacture_date, expiry_date, unit_count)` — creates the on-chain batch record and opening custody event.
+- `log_custody_transfer(holder, batch_id, role)` — appends a signed custody handoff event.
+- `confirm_delivery(receiver, batch_id)` — last-mile confirmation by a receiving clinic/CHW; this is the event `escrow`'s delivery trigger consumes.
+- `report_flag(batch_id, reason)` — records a counterfeit/diversion flag against a batch.
+- `get_batch(batch_id)` — read-only view returning the full batch record and custody log, used by the scan-to-verify flow.
 
 ---
 
 ## 🛠️ Technology Stack
+
 - **Blockchain Core**: Stellar Network
 - **Smart Contracts / Escrow**: Rust (`#![no_std]`), Soroban SDK
-- **Frontend App**: Next.js, React, Tailwind CSS
-- **Backend Infrastructure**: Node.js/Rust (For off-chain verification workflows, evidence validation & storage)
+- **Frontend App**: Next.js, React, Tailwind-style CSS
+- **Backend Infrastructure**: off-chain metadata storage, counterfeit-report evidence, and custody geolocation logs (to be built — see Status below)
+
+---
+
+## 📍 Status: What's Real vs. What's a Stub
+
+Built for speed toward a demoable pitch. Being explicit about what's genuinely working versus scaffolded:
+
+- ✅ **Working**: `escrow` and `batch` Soroban contracts — real logic, real token transfers via the Soroban token client, covered by `cargo test` unit tests.
+- ✅ **Working (frontend, local/mock data by default)**: scan-to-verify flow — swaps to live contract reads once a contract ID + RPC endpoint are configured.
+- 🧱 **Stub**: regulator dashboard, donor/sponsor dashboard, counterfeit reporting UI — scaffolded pages with representative mock data, not yet wired to live chain data.
+- ❌ **Not yet done**: testnet/mainnet deployment (needs Stellar CLI + a funded identity — infrastructure step, not a code gap), off-chain backend for evidence/geolocation storage, wallet-connect integration in the UI.
+
+This repo was repositioned from an earlier task-engagement concept ("EngageX") — the escrow/commission/rollover pattern below is inherited from that design and generalized for pharmaceutical provenance and verified aid delivery.
