@@ -17,7 +17,8 @@ frontend/out/
 .DS_Store
 
 # Soroban / Rust
-Cargo.lock
+# Cargo.lock is committed for contracts/verimed-contract (it's an application,
+# not a library — pinning prevents ecosystem drift from breaking the build).
 target/
 **/*.rs.bk
 

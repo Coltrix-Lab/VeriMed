@@ -61,7 +61,10 @@ function VerifyPageInner() {
   }
 
   useEffect(() => {
-    if (prefill) handleVerify(prefill);
+    if (!prefill) return;
+    // Deferred to a microtask so the state updates inside handleVerify don't run
+    // synchronously within the effect body itself.
+    queueMicrotask(() => handleVerify(prefill));
   }, [prefill]);
 
   const verdict = batch ? verdictFor(batch) : null;

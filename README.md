@@ -80,9 +80,9 @@ Contract lives at [`contracts/verimed-contract`](contracts/verimed-contract). Tw
 
 Built for speed toward a demoable pitch. Being explicit about what's genuinely working versus scaffolded:
 
-- ✅ **Working**: `escrow` and `batch` Soroban contracts — real logic, real token transfers via the Soroban token client, covered by `cargo test` unit tests.
-- ✅ **Working (frontend, local/mock data by default)**: scan-to-verify flow — swaps to live contract reads once a contract ID + RPC endpoint are configured.
-- 🧱 **Stub**: regulator dashboard, donor/sponsor dashboard, counterfeit reporting UI — scaffolded pages with representative mock data, not yet wired to live chain data.
-- ❌ **Not yet done**: testnet/mainnet deployment (needs Stellar CLI + a funded identity — infrastructure step, not a code gap), off-chain backend for evidence/geolocation storage, wallet-connect integration in the UI.
+- ✅ **Working**: `escrow` and `batch` Soroban contracts — real logic, real token transfers via the Soroban token client, 5/5 `cargo test` unit tests passing, compiles cleanly to `wasm32-unknown-unknown`.
+- ✅ **Working (frontend, session-local mock data by default)**: the full register → hand off → confirm delivery → scan-to-verify → flag loop is genuinely interactive within a browser session — `/dashboard/register-batch`, `/dashboard/fund-program`, `/verify`, and `/dashboard/report` all read and write through the same typed data layer (`frontend/src/lib/verimed.ts`), which is built so swapping to live Soroban RPC calls means editing that one file, not the pages.
+- 🧱 **Stub (real UI, seeded data)**: `/dashboard/donor` and `/dashboard/regulator` — genuine aggregation logic (impact stats, a real CSV export, flagged-batch/hotspot views) but reading from the same seeded mock data rather than live chain state.
+- ❌ **Not yet done**: testnet/mainnet deployment (needs Stellar CLI + a funded identity — infrastructure step, not a code gap), off-chain backend for evidence/geolocation storage, wallet-connect integration in the UI, camera-based QR/NFC scanning (the verify flow takes a typed/pasted code today).
 
 This repo was repositioned from an earlier task-engagement concept ("EngageX") — the escrow/commission/rollover pattern below is inherited from that design and generalized for pharmaceutical provenance and verified aid delivery.
