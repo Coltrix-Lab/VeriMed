@@ -16,7 +16,7 @@ export default function Home() {
             VeriMed
           </div>
           <nav className="action-buttons">
-            <button className="btn-outline">Documentation</button>
+            <Link href="/docs"><button className="btn-outline">Documentation</button></Link>
             <Link href="/dashboard"><button className="btn-primary">Enter Dashboard</button></Link>
           </nav>
         </header>

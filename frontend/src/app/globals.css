@@ -264,7 +264,7 @@ body {
 
 @media (max-width: 860px) {
   .two-col-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .sticky-panel {
