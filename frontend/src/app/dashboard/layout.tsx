@@ -20,6 +20,13 @@ export default function DashboardLayout({
           VeriMed
         </div>
 
+        <Link href="/" style={{ textDecoration: 'none' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 16px', borderRadius: '12px', color: '#a1a1aa', fontWeight: '500', fontSize: '14px', marginBottom: '24px', border: '1px solid var(--border-color)' }} className="hover:bg-[rgba(255,255,255,0.05)]">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5"></path><path d="M12 19l-7-7 7-7"></path></svg>
+            Back to Home
+          </div>
+        </Link>
+
         <nav style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
           <Link href="/dashboard" style={{ textDecoration: 'none' }}>
             <div style={{ padding: '12px 16px', borderRadius: '12px', background: 'rgba(20, 184, 166, 0.1)', color: 'var(--primary)', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '12px', border: '1px solid rgba(20, 184, 166, 0.2)' }}>

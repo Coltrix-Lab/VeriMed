@@ -73,7 +73,7 @@ function VerifyPageInner() {
     <>
       <div className="mesh-bg" style={{ opacity: 0.4, filter: 'blur(100px)' }}></div>
       <main className="container" style={{ position: 'relative', zIndex: 10, paddingTop: '48px', paddingBottom: '100px' }}>
-        <header style={{ marginBottom: '32px' }}>
+        <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px', flexWrap: 'wrap', gap: '16px' }}>
           <Link href="/" style={{ textDecoration: 'none' }}>
             <div className="logo title-gradient" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontSize: '22px' }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: 'var(--primary)' }}>
@@ -81,6 +81,12 @@ function VerifyPageInner() {
                 <rect x="4" y="9" width="16" height="12" rx="2"/>
               </svg>
               VeriMed
+            </div>
+          </Link>
+          <Link href="/" style={{ textDecoration: 'none' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 16px', borderRadius: '12px', color: '#a1a1aa', fontWeight: '500', fontSize: '14px', border: '1px solid rgba(255,255,255,0.1)' }} className="hover:bg-[rgba(255,255,255,0.05)]">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5"></path><path d="M12 19l-7-7 7-7"></path></svg>
+              Back to Home
             </div>
           </Link>
         </header>
