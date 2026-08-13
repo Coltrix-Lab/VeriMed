@@ -53,7 +53,7 @@ The hard part of drug provenance is proving an **object's chain of custody** —
 Contract lives at [`contracts/verimed-contract`](contracts/verimed-contract). Two modules:
 
 ### `escrow` — generalized from this project's original campaign-escrow logic
-- `initialize_program(sponsor, token, total_funds, commission_bps, treasury)` — sponsor deposits real tokens into the contract, locking them; commission is configurable per program instead of a fixed rate.
+- `initialize_program(program_id, sponsor, token, total_funds, commission_bps, treasury)` — sponsor deposits real tokens into the contract, locking them; commission is configurable per program instead of a fixed rate.
 - `confirm_event(verifier, program_id, beneficiary, trigger)` — records a verified release-trigger event (e.g. `DeliveryConfirmed`, `AdminVerified`) against a beneficiary. Trigger-agnostic by design — a delivery confirmation event from `batch` can drive this the same way an admin verification could.
 - `execute_payout(admin, program_id)` — computes and transfers the configurable commission to the treasury and splits the remainder across confirmed beneficiaries — real token transfers, not bookkeeping-only.
 - `rollover_program(admin, program_id)` — unspent funds continue into the next round.
@@ -76,6 +76,25 @@ Contract lives at [`contracts/verimed-contract`](contracts/verimed-contract). Tw
 
 ---
 
+## 🚀 Getting Started
+
+**Smart contracts** (Rust / Soroban, in [`contracts/verimed-contract`](contracts/verimed-contract)):
+```bash
+cd contracts/verimed-contract
+cargo test                                       # 5/5 unit tests
+cargo build --target wasm32-unknown-unknown --release   # compiles to .wasm
+```
+
+**Frontend** (Next.js, in [`frontend`](frontend)):
+```bash
+cd frontend
+npm install
+npm run dev   # http://localhost:3000
+```
+The frontend runs fully standalone against the mock data layer in `frontend/src/lib/verimed.ts` — no wallet, RPC endpoint, or deployed contract needed to click through the demo.
+
+---
+
 ## 📍 Status: What's Real vs. What's a Stub
 
 Built for speed toward a demoable pitch. Being explicit about what's genuinely working versus scaffolded:
@@ -85,4 +104,4 @@ Built for speed toward a demoable pitch. Being explicit about what's genuinely w
 - 🧱 **Stub (real UI, seeded data)**: `/dashboard/donor` and `/dashboard/regulator` — genuine aggregation logic (impact stats, a real CSV export, flagged-batch/hotspot views) but reading from the same seeded mock data rather than live chain state.
 - ❌ **Not yet done**: testnet/mainnet deployment (needs Stellar CLI + a funded identity — infrastructure step, not a code gap), off-chain backend for evidence/geolocation storage, wallet-connect integration in the UI, camera-based QR/NFC scanning (the verify flow takes a typed/pasted code today).
 
-This repo was repositioned from an earlier task-engagement concept ("EngageX") — the escrow/commission/rollover pattern below is inherited from that design and generalized for pharmaceutical provenance and verified aid delivery.
+This repo was repositioned from an earlier task-engagement concept ("EngageX") — the escrow/commission/rollover pattern above is inherited from that design and generalized for pharmaceutical provenance and verified aid delivery.
