@@ -2,6 +2,10 @@
 
 **Blockchain-Verified Pharmaceutical Provenance & Aid Delivery — Built on Stellar (Soroban)**
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-verimeds.netlify.app-14b8a6?style=for-the-badge&logo=vercel&logoColor=white)](https://verimeds.netlify.app)
+
+**🔗 Try it now: [verimeds.netlify.app](https://verimeds.netlify.app)** — no install, no wallet, no account. Head straight to [`/verify`](https://verimeds.netlify.app/verify) and check one of the seeded demo codes (e.g. `VM-2026-A001`), or click into the [`/dashboard`](https://verimeds.netlify.app/dashboard) to register a batch, fund a program, and walk the full custody chain.
+
 ## 🌟 Overview
 
 An estimated **1 in 10 medical products in low- and middle-income countries is substandard or falsified** (WHO). Fake antimalarials, underdosed antibiotics, diluted insulin — this kills patients directly and drives antimicrobial resistance globally. It is not a single-country problem: every country with a pharmaceutical supply chain is exposed, from Lagos to Manila to rural India.
@@ -77,6 +81,8 @@ Contract lives at [`contracts/verimed-contract`](contracts/verimed-contract). Tw
 ---
 
 ## 🚀 Getting Started
+
+**Fastest path — no setup:** the frontend is deployed and fully clickable at **[verimeds.netlify.app](https://verimeds.netlify.app)**. It runs against the same mock data layer described below, so every flow (register a batch, fund a program, scan to verify, flag a report) works exactly as it does locally.
 
 **Smart contracts** (Rust / Soroban, in [`contracts/verimed-contract`](contracts/verimed-contract)):
 ```bash
