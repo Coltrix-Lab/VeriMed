@@ -67,7 +67,7 @@ function RegisterForm({ onDone }: { onDone: () => void }) {
         </p>
       </header>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.5fr) minmax(0, 1fr)', gap: '48px' }}>
+      <div className="two-col-grid">
         <form onSubmit={handleSubmit} className="glass-panel" style={{ padding: '32px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
           <Field label="Batch ID">
             <input value={batchId} onChange={(e) => setBatchId(e.target.value)} placeholder="e.g. VM-2026-B014" style={inputStyle} />
@@ -75,7 +75,7 @@ function RegisterForm({ onDone }: { onDone: () => void }) {
           <Field label="Product Name">
             <input value={productName} onChange={(e) => setProductName(e.target.value)} placeholder="e.g. Amoxicillin 500mg (100 caps)" style={inputStyle} />
           </Field>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+          <div className="form-row-2">
             <Field label="Manufacture Date">
               <input type="date" value={manufactureDate} onChange={(e) => setManufactureDate(e.target.value)} style={inputStyle} />
             </Field>
@@ -98,7 +98,7 @@ function RegisterForm({ onDone }: { onDone: () => void }) {
         </form>
 
         <div>
-          <div className="glass-panel" style={{ padding: '32px', position: 'sticky', top: '24px' }}>
+          <div className="glass-panel sticky-panel" style={{ padding: '32px' }}>
             <h3 style={{ fontSize: '20px', fontWeight: 'bold', marginBottom: '24px', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '16px' }}>
               What Happens On-Chain
             </h3>

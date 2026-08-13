@@ -54,7 +54,7 @@ export default function FundProgramPage() {
         </p>
       </header>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.5fr) minmax(0, 1fr)', gap: '48px' }}>
+      <div className="two-col-grid">
         <form onSubmit={handleSubmit} className="glass-panel" style={{ padding: '32px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
           <Field label="Program ID">
             <input value={programId} onChange={(e) => setProgramId(e.target.value)} placeholder="e.g. KOICA-NG-2026-02" style={inputStyle} />
@@ -65,7 +65,7 @@ export default function FundProgramPage() {
           <Field label="Treasury Wallet (platform commission recipient)">
             <input value={treasury} onChange={(e) => setTreasury(e.target.value)} style={inputStyle} />
           </Field>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+          <div className="form-row-2">
             <Field label="Total Funds (USDC)">
               <input type="number" value={totalFunds} onChange={(e) => setTotalFunds(e.target.value)} style={inputStyle} />
             </Field>
@@ -86,7 +86,7 @@ export default function FundProgramPage() {
         </form>
 
         <div>
-          <div className="glass-panel" style={{ padding: '32px', position: 'sticky', top: '24px', background: 'linear-gradient(180deg, rgba(20,20,30,0.6) 0%, rgba(20,20,30,0.9) 100%)' }}>
+          <div className="glass-panel sticky-panel" style={{ padding: '32px', background: 'linear-gradient(180deg, rgba(20,20,30,0.6) 0%, rgba(20,20,30,0.9) 100%)' }}>
             <h3 style={{ fontSize: '20px', fontWeight: 'bold', marginBottom: '24px', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '16px' }}>Escrow Summary</h3>
 
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px', color: '#cbd5e1' }}>

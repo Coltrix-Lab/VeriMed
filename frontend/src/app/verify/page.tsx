@@ -102,16 +102,16 @@ function VerifyPageInner() {
             <label style={{ display: 'block', fontSize: '14px', fontWeight: 'bold', marginBottom: '12px', color: '#e2e8f0' }}>
               Batch / Unit Code
             </label>
-            <div style={{ display: 'flex', gap: '12px' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
               <input
                 type="text"
                 value={code}
                 onChange={(e) => setCode(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleVerify(code)}
                 placeholder="e.g. VM-2026-A001"
-                style={{ flex: 1, padding: '16px', background: 'rgba(0,0,0,0.3)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', color: 'white', outline: 'none', fontSize: '16px' }}
+                style={{ flex: '1 1 200px', minWidth: 0, padding: '16px', background: 'rgba(0,0,0,0.3)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', color: 'white', outline: 'none', fontSize: '16px' }}
               />
-              <button className="btn-primary" onClick={() => handleVerify(code)} disabled={loading}>
+              <button className="btn-primary" onClick={() => handleVerify(code)} disabled={loading} style={{ flex: '1 1 auto' }}>
                 {loading ? 'Checking…' : 'Verify'}
               </button>
             </div>
@@ -169,10 +169,10 @@ function VerifyPageInner() {
               </h4>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 {batch.custodyLog.map((event, i) => (
-                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '14px' }}>
+                  <div key={i} style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '4px 12px', fontSize: '14px' }}>
                     <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--accent-secondary)', flexShrink: 0 }} />
-                    <span style={{ fontWeight: '600', color: '#e2e8f0', minWidth: '110px' }}>{event.role}</span>
-                    <span style={{ color: '#a1a1aa', fontFamily: 'monospace', fontSize: '12px' }}>{event.holder}</span>
+                    <span style={{ fontWeight: '600', color: '#e2e8f0', minWidth: '90px' }}>{event.role}</span>
+                    <span style={{ color: '#a1a1aa', fontFamily: 'monospace', fontSize: '12px', wordBreak: 'break-all' }}>{event.holder}</span>
                     <span style={{ color: '#71717a', fontSize: '12px', marginLeft: 'auto' }}>{new Date(event.timestamp * 1000).toLocaleDateString()}</span>
                   </div>
                 ))}

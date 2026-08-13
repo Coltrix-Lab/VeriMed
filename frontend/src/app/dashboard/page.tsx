@@ -34,7 +34,7 @@ export default function Dashboard() {
 
       {loading && <p style={{ color: '#a1a1aa' }}>Loading registry…</p>}
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))', gap: '24px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(320px, 100%), 1fr))', gap: '24px' }}>
         {batches.map((batch, index) => {
           const style = STATUS_STYLE[batch.status];
           const expired = isExpired(batch);

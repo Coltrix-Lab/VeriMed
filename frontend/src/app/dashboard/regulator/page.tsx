@@ -50,7 +50,7 @@ export default function RegulatorDashboard() {
 
       {loading && <p style={{ color: '#a1a1aa' }}>Loading network data…</p>}
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.6fr) minmax(0, 1fr)', gap: '24px' }}>
+      <div className="two-col-grid" style={{ gap: '24px' }}>
         <div>
           <h2 style={{ fontSize: '20px', fontWeight: 'bold', marginBottom: '16px' }}>Flagged Batches</h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
